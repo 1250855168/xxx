@@ -1,0 +1,20 @@
+main: main.o dec.o dive.o mux.o sub.o
+	gcc -o main main.c dec.o dive.o mux.o sub.o -lm -I/usr/include
+
+main.o: main.c dec.h dive.h mux.h sub.h
+	gcc -c -o main.o main.c
+
+dec.o: dec.c 
+	gcc -c dec.c
+
+dive.o: dive.c
+	gcc -c  dive.c
+
+mux.o: mux.c
+	gcc -c mux.c
+
+sub.o: sub.c
+	gcc -c  sub.c
+
+clean:
+	rm -rf *.o main

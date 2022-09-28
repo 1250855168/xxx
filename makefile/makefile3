@@ -1,0 +1,16 @@
+src=$(wildcard *.c )
+
+obj=$(patsubst %.c,%.o,${src})
+
+ALL:main
+
+%.o:%.c
+	gcc -c $< -o $@
+
+main: ${obj}
+	gcc $^ -o $@ -lm -I/usr/include
+
+clean:
+	-rm -rf ${obj} a.out
+
+.PHONY:clean ALL
